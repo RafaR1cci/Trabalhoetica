@@ -1,0 +1,1092 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@400;500;600&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:#fff;color:#3A3830;line-height:1.6}
+
+:root{
+  --am:#F5C518;--aml:#FFF8D6;--amm:#FFE066;--amd:#C89B00;
+  --br:#fff;--sf:#FAFAF7;--ct:#3A3830;--cs:#7A7560;--bd:rgba(200,155,0,.18);
+}
+
+nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;border-bottom:1px solid var(--bd);background:#fff;position:sticky;top:0;z-index:50}
+.logo{font-family:'Fraunces',serif;font-size:1.15rem;font-weight:700;display:flex;align-items:center;gap:8px;color:var(--ct)}
+.logo-dot{width:30px;height:30px;border-radius:50%;background:var(--am);display:flex;align-items:center;justify-content:center;font-size:.9rem}
+.nav-links{display:flex;list-style:none;gap:1.5rem;flex-wrap:wrap}
+.nav-links a{text-decoration:none;font-size:.88rem;color:var(--cs);font-weight:500;cursor:pointer;transition:color .2s}
+.nav-links a:hover,.nav-links a.ativo{color:var(--ct)}
+.nav-cta{background:var(--am);color:var(--ct) !important;padding:.4rem 1.1rem;border-radius:50px;font-weight:600 !important}
+
+.page{display:none}
+.page.ativo{display:block}
+
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:center;padding:4rem 2rem 3rem;max-width:1060px;margin:0 auto}
+.hero-tag{display:inline-flex;align-items:center;gap:.4rem;background:var(--aml);border:1px solid var(--amm);color:var(--amd);font-size:.78rem;font-weight:600;padding:.28rem .8rem;border-radius:50px;margin-bottom:1.2rem;letter-spacing:.04em;text-transform:uppercase}
+.hero h1{font-family:'Fraunces',serif;font-size:2.9rem;line-height:1.15;font-weight:700;margin-bottom:1rem;color:var(--ct)}
+.hero h1 em{font-style:italic;color:var(--amd)}
+.hero p{font-size:1rem;color:var(--cs);margin-bottom:1.8rem;max-width:440px}
+.hero-btns{display:flex;gap:.8rem;flex-wrap:wrap}
+.btn-primary{background:var(--am);color:var(--ct);font-weight:600;font-size:.92rem;padding:.8rem 1.6rem;border-radius:50px;border:none;cursor:pointer;transition:transform .15s;font-family:'DM Sans',sans-serif}
+.btn-primary:hover{transform:translateY(-2px)}
+.btn-sec{background:transparent;color:var(--ct);font-weight:600;font-size:.92rem;padding:.8rem 1.6rem;border-radius:50px;border:1.5px solid var(--bd);cursor:pointer;font-family:'DM Sans',sans-serif;transition:border-color .2s}
+.btn-sec:hover{border-color:var(--amd)}
+
+.hero-card{background:var(--sf);border:1px solid var(--bd);border-radius:22px;padding:1.8rem;width:300px;margin:0 auto;position:relative}
+.badge-float{position:absolute;top:-14px;right:-14px;background:var(--am);border-radius:14px;padding:.5rem .9rem;font-size:.78rem;font-weight:700;color:var(--ct)}
+.card-lbl{font-size:.72rem;color:var(--cs);font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.3rem}
+.card-val{font-family:'Fraunces',serif;font-size:2.2rem;font-weight:700;color:var(--ct);margin-bottom:1rem}
+.prog-wrap{background:#EEE9D8;border-radius:50px;height:7px;margin-bottom:.35rem;overflow:hidden}
+.prog-bar{height:100%;border-radius:50px;background:var(--am);animation:grow 1.4s ease forwards;width:0%}
+@keyframes grow{to{width:68%}}
+.prog-lbl{font-size:.75rem;color:var(--cs);display:flex;justify-content:space-between}
+.cdiv{height:1px;background:var(--bd);margin:1rem 0}
+.mini-stats{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+.ms{background:#fff;border:1px solid var(--bd);border-radius:11px;padding:.6rem .85rem}
+.ms-lbl{font-size:.68rem;color:var(--cs);font-weight:600;text-transform:uppercase;letter-spacing:.05em}
+.ms-val{font-family:'Fraunces',serif;font-size:1.15rem;font-weight:700;margin-top:.1rem}
+
+.numeros{background:var(--am);padding:2.5rem 2rem;text-align:center}
+.num-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;max-width:700px;margin:0 auto}
+.num-item h3{font-family:'Fraunces',serif;font-size:2.6rem;font-weight:700;color:var(--ct)}
+.num-item p{font-size:.88rem;color:var(--cs);font-weight:500;margin-top:.2rem}
+
+.modulos{padding:4rem 2rem;max-width:1060px;margin:0 auto}
+.sec-hdr{text-align:center;margin-bottom:2.5rem}
+.sec-tag{display:inline-block;background:var(--aml);color:var(--amd);font-size:.73rem;font-weight:700;padding:.28rem .85rem;border-radius:50px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.8rem}
+.sec-hdr h2{font-family:'Fraunces',serif;font-size:2.2rem;font-weight:700;color:var(--ct);margin-bottom:.7rem}
+.sec-hdr p{color:var(--cs);font-size:.95rem;max-width:500px;margin:0 auto}
+.mod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem}
+.mod-card{background:#fff;border:1px solid var(--bd);border-radius:18px;padding:1.6rem;cursor:pointer;transition:transform .2s,border-color .2s}
+.mod-card:hover{transform:translateY(-3px);border-color:var(--amm)}
+.mod-icon{width:44px;height:44px;border-radius:12px;background:var(--aml);display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:1rem}
+.mod-card h3{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:700;margin-bottom:.4rem;color:var(--ct)}
+.mod-card p{font-size:.84rem;color:var(--cs);line-height:1.55;margin-bottom:1rem}
+.mod-badge{display:inline-flex;align-items:center;gap:.3rem;font-size:.75rem;font-weight:600;color:var(--amd);background:var(--aml);padding:.22rem .65rem;border-radius:50px}
+
+.calc-sec{background:var(--sf);padding:4rem 2rem}
+.calc-inner{max-width:860px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:center}
+.calc-form{display:flex;flex-direction:column;gap:1rem}
+.calc-form label{font-size:.83rem;font-weight:600;color:var(--ct);display:block;margin-bottom:.35rem}
+.calc-form input{width:100%;background:#fff;border:1.5px solid var(--bd);border-radius:11px;padding:.75rem 1rem;font-size:.95rem;font-family:'DM Sans',sans-serif;color:var(--ct);outline:none;transition:border-color .2s}
+.calc-form input:focus{border-color:var(--amd)}
+.calc-res{background:#fff;border:1px solid var(--bd);border-radius:18px;padding:1.8rem;text-align:center}
+.calc-main{font-family:'Fraunces',serif;font-size:2.8rem;font-weight:700;color:var(--ct);margin:.4rem 0}
+.calc-dica{background:var(--aml);border-left:3px solid var(--am);padding:.75rem 1rem;border-radius:0 9px 9px 0;font-size:.82rem;color:var(--amd);font-weight:600;margin-top:.9rem;text-align:left}
+
+.cta-final{background:var(--am);padding:4rem 2rem;text-align:center;position:relative;overflow:hidden}
+.cta-final::before{content:'';position:absolute;top:-70px;right:-70px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.14)}
+.cta-final::after{content:'';position:absolute;bottom:-50px;left:-50px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,.1)}
+.cta-final h2{font-family:'Fraunces',serif;font-size:2.4rem;font-weight:700;color:var(--ct);margin-bottom:.8rem;position:relative;z-index:1}
+.cta-final p{color:var(--cs);font-size:.95rem;max-width:460px;margin:0 auto 1.8rem;position:relative;z-index:1}
+.btn-dark{background:var(--ct);color:var(--am);font-weight:700;font-size:.95rem;padding:.95rem 2rem;border-radius:50px;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;transition:transform .15s;position:relative;z-index:1}
+.btn-dark:hover{transform:translateY(-2px)}
+
+/* ── HUB ── */
+.hub-page{background:var(--sf);padding:2rem}
+.hub-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.4rem;max-width:1060px;margin-left:auto;margin-right:auto}
+.hub-title{font-family:'Fraunces',serif;font-size:1.4rem;font-weight:700;color:var(--ct);display:flex;align-items:center;gap:8px}
+.hub-mes{font-size:.82rem;color:var(--cs);background:#fff;border:0.5px solid var(--bd);border-radius:20px;padding:.28rem .9rem}
+
+.hub-wrap{max-width:1060px;margin:0 auto}
+.metric-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:1.1rem}
+.metric{background:#fff;border:0.5px solid var(--bd);border-radius:10px;padding:13px 15px}
+.m-lbl{font-size:.7rem;font-weight:600;color:var(--cs);text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px}
+.m-val{font-family:'Fraunces',serif;font-size:1.45rem;font-weight:700;color:var(--ct)}
+.m-val.g{color:#3B6D11}.m-val.r{color:#A32D2D}.m-val.a{color:#854F0B}
+.m-sub{font-size:.68rem;color:var(--cs);margin-top:1px}
+
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.hcard{background:#fff;border:0.5px solid var(--bd);border-radius:14px;padding:1.2rem}
+.hcard-title{font-size:.72rem;font-weight:600;color:var(--cs);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.9rem;display:flex;align-items:center;gap:5px}
+
+.tipo-btns{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:8px}
+.tbtn{padding:7px;border:0.5px solid var(--bd);border-radius:9px;font-size:.78rem;font-weight:600;cursor:pointer;background:#f9f6ef;color:var(--cs);transition:all .15s;font-family:'DM Sans',sans-serif}
+.tbtn.rativo{background:#EAF3DE;border-color:#3B6D11;color:#27500A}
+.tbtn.dativo{background:#FCEBEB;border-color:#A32D2D;color:#791F1F}
+.hinput{width:100%;padding:7px 10px;border:0.5px solid var(--bd);border-radius:9px;font-size:.82rem;background:#f9f6ef;color:var(--ct);font-family:'DM Sans',sans-serif;outline:none;margin-bottom:6px}
+.hinput:focus{border-color:var(--amd)}
+.hadd{width:100%;padding:8px;background:var(--am);border:none;border-radius:9px;font-size:.82rem;font-weight:700;cursor:pointer;color:var(--ct);font-family:'DM Sans',sans-serif;margin-top:2px}
+.dica-box{background:#FFFBE6;border-left:3px solid var(--am);padding:8px 10px;font-size:.78rem;color:var(--amd);font-weight:500;margin-top:7px;border-radius:0 8px 8px 0}
+
+.lista{display:flex;flex-direction:column;gap:5px;max-height:240px;overflow-y:auto}
+.li{display:flex;align-items:center;justify-content:space-between;padding:8px 10px;background:#f9f6ef;border-radius:9px;font-size:.82rem}
+.li-left{display:flex;align-items:center;gap:7px}
+.li-ico{width:26px;height:26px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:.8rem;flex-shrink:0}
+.li-desc{font-weight:600;color:var(--ct);font-size:.82rem}
+.li-cat{font-size:.68rem;color:var(--cs)}
+.li-val{font-weight:700;font-size:.82rem}
+.li-val.vr{color:#3B6D11}.li-val.vd{color:#A32D2D}
+.li-del{background:none;border:none;cursor:pointer;color:var(--cs);font-size:.82rem;padding:0 2px;line-height:1}
+.li-del:hover{color:#A32D2D}
+.empty{text-align:center;color:var(--cs);font-size:.82rem;padding:1.5rem 0}
+
+.bcat{display:flex;flex-direction:column;gap:7px}
+.bi{display:flex;flex-direction:column;gap:2px}
+.bt{display:flex;justify-content:space-between;font-size:.78rem}
+.bn{color:var(--cs)}.bv{font-weight:600;color:var(--ct)}
+.btrack{height:5px;background:#EEE9D8;border-radius:50px;overflow:hidden}
+.bfill{height:100%;border-radius:50px;transition:width .4s ease}
+
+.meta-item{display:flex;flex-direction:column;gap:3px;padding-bottom:10px;border-bottom:0.5px solid var(--bd)}
+.meta-item:last-child{border:none;padding-bottom:0}
+.meta-top{display:flex;justify-content:space-between;align-items:center}
+.meta-nome{font-size:.82rem;font-weight:600;color:var(--ct)}
+.meta-v{font-size:.75rem;color:var(--cs)}
+.meta-track{height:6px;background:#EEE9D8;border-radius:50px;overflow:hidden;margin:2px 0}
+.meta-fill{height:100%;border-radius:50px;background:var(--am);transition:width .4s}
+.meta-pct{font-size:.7rem;color:var(--cs)}
+
+.chart-wrap{position:relative;width:100%;height:150px}
+.hub-actions{display:flex;gap:8px;justify-content:center;margin-top:.8rem;flex-wrap:wrap}
+.hab{padding:8px 15px;border:0.5px solid var(--bd);border-radius:20px;font-size:.78rem;font-weight:600;background:transparent;cursor:pointer;color:var(--cs);font-family:'DM Sans',sans-serif;transition:border-color .2s}
+.hab:hover{border-color:var(--amd)}
+.hab.hpri{background:var(--am);color:var(--ct);border-color:var(--amd);font-weight:700}
+
+/* ── CRIANÇAS (ARTIGO) ── */
+.artigo-page{max-width:800px;margin:0 auto;padding:3rem 2rem}
+.artigo-hero{background:linear-gradient(135deg,var(--aml) 0%,#fff 100%);border:1px solid var(--amm);border-radius:24px;padding:2.5rem;margin-bottom:2.5rem;position:relative;overflow:hidden}
+.artigo-hero::after{content:'🎒';position:absolute;right:2rem;top:1.5rem;font-size:4rem;opacity:.18}
+.artigo-hero .sec-tag{margin-bottom:.8rem}
+.artigo-hero h1{font-family:'Fraunces',serif;font-size:2.1rem;font-weight:700;color:var(--ct);line-height:1.2;margin-bottom:.8rem}
+.artigo-hero h1 em{color:var(--amd);font-style:italic}
+.artigo-hero p{color:var(--cs);font-size:.97rem;max-width:540px}
+.artigo-meta{display:flex;gap:1.2rem;margin-top:1.2rem;flex-wrap:wrap}
+.artigo-meta span{font-size:.78rem;color:var(--cs);font-weight:600;display:flex;align-items:center;gap:.3rem;background:#fff;padding:.3rem .75rem;border-radius:20px;border:1px solid var(--bd)}
+
+.artigo-nav{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:2rem;background:var(--sf);border-radius:14px;padding:.5rem}
+.anav-btn{padding:.5rem 1rem;border-radius:10px;border:none;background:transparent;font-size:.82rem;font-weight:600;cursor:pointer;color:var(--cs);font-family:'DM Sans',sans-serif;transition:all .2s}
+.anav-btn.ativo,.anav-btn:hover{background:var(--am);color:var(--ct)}
+
+.artigo-secao{display:none}
+.artigo-secao.ativo{display:block}
+.artigo-secao h2{font-family:'Fraunces',serif;font-size:1.55rem;font-weight:700;color:var(--ct);margin-bottom:1rem;padding-bottom:.7rem;border-bottom:2px solid var(--aml)}
+.artigo-secao h3{font-family:'Fraunces',serif;font-size:1.15rem;font-weight:700;color:var(--ct);margin:1.5rem 0 .6rem}
+.artigo-secao p{color:var(--cs);font-size:.95rem;line-height:1.75;margin-bottom:1rem}
+.artigo-secao ul{margin:0 0 1rem 1.3rem}
+.artigo-secao ul li{color:var(--cs);font-size:.93rem;line-height:1.7;margin-bottom:.35rem}
+.artigo-secao ul li strong{color:var(--ct)}
+
+.dica-card{background:var(--aml);border:1px solid var(--amm);border-radius:14px;padding:1.2rem 1.4rem;margin:1.2rem 0;display:flex;gap:.9rem;align-items:flex-start}
+.dica-emoji{font-size:1.6rem;flex-shrink:0;margin-top:.1rem}
+.dica-txt strong{font-size:.9rem;color:var(--ct);font-weight:700;display:block;margin-bottom:.2rem}
+.dica-txt p{font-size:.85rem;color:var(--amd);margin:0}
+
+.faixa-etaria{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.2rem 0}
+.fe-card{background:#fff;border:1px solid var(--bd);border-radius:14px;padding:1.1rem}
+.fe-card .fe-topo{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--amd);margin-bottom:.4rem;background:var(--aml);display:inline-block;padding:.15rem .55rem;border-radius:20px}
+.fe-card h4{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:700;color:var(--ct);margin-bottom:.5rem}
+.fe-card ul{margin:0 0 0 1.1rem}
+.fe-card ul li{font-size:.8rem;color:var(--cs);line-height:1.6}
+
+.artigo-nav-bottom{display:flex;justify-content:space-between;margin-top:2rem;gap:.5rem}
+.anb-btn{flex:1;padding:.75rem 1rem;border-radius:12px;border:1.5px solid var(--bd);font-size:.82rem;font-weight:600;cursor:pointer;background:#fff;color:var(--ct);font-family:'DM Sans',sans-serif;transition:all .2s;text-align:center}
+.anb-btn:hover{border-color:var(--amd);background:var(--aml)}
+.anb-btn.prox{background:var(--am);border-color:var(--amd)}
+.anb-btn:disabled{opacity:.35;cursor:not-allowed}
+
+/* ── GAMIFICAÇÃO / RANKING ── */
+.game-page{background:var(--sf);min-height:100vh;padding:2rem}
+.game-wrap{max-width:1060px;margin:0 auto}
+
+.game-hero{background:linear-gradient(135deg,#3A3830 0%,#5C5640 100%);border-radius:24px;padding:2.5rem;margin-bottom:1.5rem;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center;position:relative;overflow:hidden}
+.game-hero::before{content:'';position:absolute;top:-60px;right:-60px;width:220px;height:220px;border-radius:50%;background:rgba(245,197,24,.12)}
+.game-hero::after{content:'';position:absolute;bottom:-40px;left:30%;width:160px;height:160px;border-radius:50%;background:rgba(245,197,24,.07)}
+.game-hero h2{font-family:'Fraunces',serif;font-size:1.9rem;font-weight:700;color:#fff;margin-bottom:.5rem;position:relative;z-index:1}
+.game-hero p{color:rgba(255,255,255,.7);font-size:.9rem;max-width:400px;position:relative;z-index:1}
+.game-xp-pill{background:var(--am);color:var(--ct);font-weight:700;font-size:.82rem;padding:.35rem .85rem;border-radius:20px;display:inline-flex;align-items:center;gap:.4rem;margin-top:.9rem;position:relative;z-index:1}
+.game-nivel-box{background:rgba(245,197,24,.15);border:1.5px solid rgba(245,197,24,.4);border-radius:18px;padding:1.2rem 1.6rem;text-align:center;position:relative;z-index:1}
+.gnivel-lbl{font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;color:rgba(255,255,255,.6);font-weight:600;margin-bottom:.2rem}
+.gnivel-val{font-family:'Fraunces',serif;font-size:2.4rem;font-weight:700;color:var(--am);line-height:1}
+.gnivel-nome{font-size:.8rem;color:rgba(255,255,255,.75);font-weight:600;margin-top:.2rem}
+.gnivel-prog{background:rgba(255,255,255,.15);border-radius:50px;height:5px;margin-top:.7rem;overflow:hidden}
+.gnivel-fill{background:var(--am);height:100%;border-radius:50px;transition:width .5s ease}
+
+.game-cols{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.gcard{background:#fff;border:0.5px solid var(--bd);border-radius:14px;padding:1.2rem}
+.gcard-title{font-size:.72rem;font-weight:600;color:var(--cs);text-transform:uppercase;letter-spacing:.05em;margin-bottom:1rem;display:flex;align-items:center;gap:5px}
+
+/* desafios */
+.desafio-lista{display:flex;flex-direction:column;gap:.6rem}
+.desafio{display:flex;align-items:center;gap:.85rem;padding:.85rem 1rem;border-radius:11px;border:1px solid var(--bd);cursor:pointer;transition:all .2s;background:#fff}
+.desafio:hover{border-color:var(--amm);background:var(--aml)}
+.desafio.concluido{background:#EAF3DE;border-color:#7DBF3A;opacity:.75;cursor:default}
+.desafio-ico{width:38px;height:38px;border-radius:10px;background:var(--aml);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.desafio.concluido .desafio-ico{background:#C6E9A0}
+.desafio-info{flex:1}
+.desafio-nome{font-size:.85rem;font-weight:600;color:var(--ct)}
+.desafio.concluido .desafio-nome{text-decoration:line-through;color:var(--cs)}
+.desafio-desc{font-size:.75rem;color:var(--cs);margin-top:.1rem}
+.desafio-xp{font-size:.75rem;font-weight:700;color:var(--amd);background:var(--aml);padding:.18rem .55rem;border-radius:20px;white-space:nowrap;flex-shrink:0}
+.desafio.concluido .desafio-xp{background:#C6E9A0;color:#27500A}
+
+/* ranking */
+.ranking-lista{display:flex;flex-direction:column;gap:.5rem}
+.rk-item{display:flex;align-items:center;gap:.8rem;padding:.75rem 1rem;border-radius:11px;background:#f9f6ef;transition:background .2s}
+.rk-item.meu{background:var(--aml);border:1.5px solid var(--amm)}
+.rk-pos{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:700;color:var(--cs);width:22px;text-align:center;flex-shrink:0}
+.rk-item:nth-child(1) .rk-pos{color:#C89B00}
+.rk-item:nth-child(2) .rk-pos{color:#7A7560}
+.rk-item:nth-child(3) .rk-pos{color:#A0522D}
+.rk-avatar{width:30px;height:30px;border-radius:50%;background:var(--am);display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0}
+.rk-nome{font-size:.85rem;font-weight:600;color:var(--ct);flex:1}
+.rk-xp{font-size:.78rem;font-weight:700;color:var(--amd)}
+.rk-badge{font-size:.7rem;background:var(--aml);color:var(--amd);padding:.15rem .45rem;border-radius:20px;font-weight:600}
+
+/* conquistas */
+.conquistas-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem}
+.conquista{background:#f9f6ef;border:1px solid var(--bd);border-radius:12px;padding:.85rem .6rem;text-align:center;transition:all .2s}
+.conquista.desbloqueada{background:var(--aml);border-color:var(--amm)}
+.conquista:not(.desbloqueada){opacity:.5;filter:grayscale(.6)}
+.conquista-ico{font-size:1.5rem;margin-bottom:.3rem}
+.conquista-nome{font-size:.68rem;font-weight:600;color:var(--ct);line-height:1.3}
+
+/* quiz */
+.quiz-box{background:#fff;border:0.5px solid var(--bd);border-radius:14px;padding:1.4rem;margin-bottom:1rem}
+.quiz-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem}
+.quiz-prog{font-size:.75rem;color:var(--cs);font-weight:600}
+.quiz-xp-badge{font-size:.75rem;font-weight:700;color:var(--amd);background:var(--aml);padding:.18rem .55rem;border-radius:20px}
+.quiz-q{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:700;color:var(--ct);margin-bottom:1rem;line-height:1.4}
+.quiz-opts{display:flex;flex-direction:column;gap:.5rem}
+.quiz-opt{padding:.75rem 1rem;border-radius:11px;border:1.5px solid var(--bd);font-size:.88rem;cursor:pointer;text-align:left;background:#fff;color:var(--ct);font-family:'DM Sans',sans-serif;font-weight:500;transition:all .2s}
+.quiz-opt:hover:not(:disabled){border-color:var(--amm);background:var(--aml)}
+.quiz-opt.certo{background:#EAF3DE;border-color:#3B6D11;color:#27500A}
+.quiz-opt.errado{background:#FCEBEB;border-color:#A32D2D;color:#791F1F}
+.quiz-feedback{margin-top:1rem;padding:.9rem 1rem;border-radius:11px;font-size:.88rem;font-weight:600;display:none}
+.quiz-feedback.show{display:block}
+.quiz-feedback.ok{background:#EAF3DE;color:#27500A}
+.quiz-feedback.nok{background:#FCEBEB;color:#791F1F}
+.quiz-next{margin-top:.8rem;padding:.7rem 1.4rem;background:var(--am);border:none;border-radius:50px;font-size:.88rem;font-weight:700;cursor:pointer;color:var(--ct);font-family:'DM Sans',sans-serif;display:none}
+.quiz-next.show{display:inline-flex}
+
+/* alerta saudável */
+.alerta-saudavel{background:linear-gradient(135deg,#FFF8D6,#fff);border:1px solid var(--amm);border-radius:14px;padding:1.2rem 1.4rem;margin-bottom:1rem;display:grid;grid-template-columns:auto 1fr;gap:1rem;align-items:flex-start}
+.alerta-saudavel .as-ico{font-size:1.8rem}
+.alerta-saudavel h4{font-family:'Fraunces',serif;font-size:1rem;font-weight:700;color:var(--ct);margin-bottom:.4rem}
+.alerta-saudavel p{font-size:.83rem;color:var(--cs);line-height:1.65;margin-bottom:.6rem}
+.alerta-saudavel ul{margin:0 0 0 1rem}
+.alerta-saudavel ul li{font-size:.8rem;color:var(--cs);line-height:1.65}
+.alerta-saudavel ul li strong{color:var(--ct)}
+
+/* toast */
+.toast{position:fixed;bottom:1.5rem;right:1.5rem;background:var(--ct);color:var(--am);font-weight:700;font-size:.88rem;padding:.9rem 1.4rem;border-radius:14px;z-index:999;transform:translateY(80px);opacity:0;transition:all .35s ease;pointer-events:none;max-width:280px}
+.toast.show{transform:translateY(0);opacity:1}
+
+@media(max-width:700px){
+  .hero{grid-template-columns:1fr}
+  .hero-card{width:100%;max-width:300px}
+  .mod-grid{grid-template-columns:1fr 1fr}
+  .calc-inner{grid-template-columns:1fr}
+  .metric-row{grid-template-columns:1fr 1fr}
+  .two-col,.game-cols{grid-template-columns:1fr}
+  .faixa-etaria{grid-template-columns:1fr}
+  .conquistas-grid{grid-template-columns:repeat(3,1fr)}
+  .game-hero{grid-template-columns:1fr}
+  .game-nivel-box{display:none}
+  nav{flex-wrap:wrap;gap:.5rem}
+  .nav-links{gap:.8rem}
+}
+</style>
+
+<h2 style="position:absolute;left:-9999px" class="sr-only">Site Finanças para Todos com hub de controle financeiro integrado</h2>
+
+<nav>
+  <div class="logo"><div class="logo-dot">🌱</div> Finanças para Todos</div>
+  <ul class="nav-links">
+    <li><a onclick="ir('home')" id="nl-home" class="ativo">Início</a></li>
+    <li><a onclick="ir('aprender')" id="nl-aprender">Aprender</a></li>
+    <li><a onclick="ir('criancas')" id="nl-criancas">Crianças</a></li>
+    <li><a onclick="ir('game')" id="nl-game">🏆 Ranking</a></li>
+    <li><a onclick="ir('hub')" id="nl-hub">Meu Hub</a></li>
+    <li><a onclick="ir('hub')" class="nav-cta">Controlar finanças</a></li>
+  </ul>
+</nav>
+
+<!-- HOME -->
+<div class="page ativo" id="pg-home">
+  <section class="hero">
+    <div>
+      <div class="hero-tag">🌟 Acesso gratuito para todos</div>
+      <h1>O dinheiro pode trabalhar <em>a seu favor</em></h1>
+      <p>Aprendizado financeiro simples, prático e sem julgamentos. Para quem quer dar o primeiro passo em direção à estabilidade financeira.</p>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="ir('hub')">Controlar minhas finanças →</button>
+        <button class="btn-sec" onclick="ir('aprender')">Ver módulos</button>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:center">
+      <div class="hero-card">
+        <div class="badge-float">✨ Meta atingida!</div>
+        <div class="card-lbl">Minha reserva de emergência</div>
+        <div class="card-val">R$ 2.040</div>
+        <div class="prog-wrap"><div class="prog-bar"></div></div>
+        <div class="prog-lbl"><span>68% da meta</span><span>Meta: R$ 3.000</span></div>
+        <div class="cdiv"></div>
+        <div class="mini-stats">
+          <div class="ms"><div class="ms-lbl">Economizado</div><div class="ms-val">R$ 340<span style="font-size:.68rem;color:#7A7560">/mês</span></div></div>
+          <div class="ms"><div class="ms-lbl">Próxima meta</div><div class="ms-val" style="color:#C89B00">6 semanas</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="numeros">
+    <div class="num-grid">
+      <div class="num-item"><h3>47 mil</h3><p>pessoas aprendendo</p></div>
+      <div class="num-item"><h3>100%</h3><p>gratuito e acessível</p></div>
+      <div class="num-item"><h3>8 min</h3><p>por aula, no seu ritmo</p></div>
+    </div>
+  </section>
+
+  <section class="modulos" id="sec-modulos">
+    <div class="sec-hdr">
+      <div class="sec-tag">📚 Módulos em destaque</div>
+      <h2>Do básico ao seu primeiro investimento</h2>
+      <p>Cada módulo foi criado pensando em quem começa do zero. Sem termos complicados.</p>
+    </div>
+    <div class="mod-grid">
+      <div class="mod-card" onclick="sendPrompt('Me explica o módulo sobre orçamento pessoal para quem tem renda baixa')"><div class="mod-icon">💰</div><h3>Orçamento que funciona</h3><p>Organize sua renda mensal mesmo ganhando pouco. Técnicas para não faltar no fim do mês.</p><div class="mod-badge">🎓 5 aulas · 40min</div></div>
+      <div class="mod-card" onclick="sendPrompt('Quero aprender sobre como sair das dívidas com juros altos')"><div class="mod-icon">🔓</div><h3>Saindo das dívidas</h3><p>Estratégias reais para quitar o que deve e negociar com credores sem complicação.</p><div class="mod-badge">🎓 7 aulas · 55min</div></div>
+      <div class="mod-card" onclick="sendPrompt('O que é reserva de emergência e como montar uma com pouco dinheiro?')"><div class="mod-icon">🛡️</div><h3>Reserva de emergência</h3><p>Como criar a sua com apenas R$ 10 por semana. Segurança real ao seu alcance.</p><div class="mod-badge">🎓 4 aulas · 30min</div></div>
+      <div class="mod-card" onclick="ir('criancas')"><div class="mod-icon">🧒</div><h3>Finanças para crianças</h3><p>Como ensinar seus filhos a lidar com dinheiro desde cedo, de forma divertida.</p><div class="mod-badge">📖 Artigo completo</div></div>
+      <div class="mod-card" onclick="sendPrompt('Como posso começar a investir mesmo com pouco dinheiro no Brasil?')"><div class="mod-icon">📈</div><h3>Primeiro investimento</h3><p>Tesouro Direto, poupança e mais. Onde colocar seu dinheiro para ele crescer.</p><div class="mod-badge">🎓 8 aulas · 1h10min</div></div>
+      <div class="mod-card" onclick="ir('game')"><div class="mod-icon">🏆</div><h3>Aprenda & ganhe pontos</h3><p>Teste seus conhecimentos, complete desafios e suba no ranking da comunidade.</p><div class="mod-badge">🎮 Gamificação</div></div>
+    </div>
+  </section>
+
+  <section class="calc-sec">
+    <div class="calc-inner">
+      <div>
+        <div class="sec-tag">🧮 Calculadora</div>
+        <h2 style="font-family:'Fraunces',serif;font-size:1.9rem;font-weight:700;color:#3A3830;margin:.7rem 0 .9rem">Quanto vou juntar?</h2>
+        <p style="color:#7A7560;font-size:.93rem;margin-bottom:1.8rem">Coloque quanto consegue guardar por mês e veja seu futuro financeiro crescer.</p>
+        <div class="calc-form">
+          <div><label>Quanto pode guardar por mês?</label><input type="number" id="c-mensal" value="100" min="0" oninput="calcular()"></div>
+          <div><label>Por quantos meses?</label><input type="number" id="c-meses" value="12" min="1" oninput="calcular()"></div>
+        </div>
+      </div>
+      <div class="calc-res">
+        <div class="card-lbl">Você vai acumular</div>
+        <div class="calc-main" id="c-res">R$ 1.200</div>
+        <div style="font-size:.82rem;color:#7A7560;margin-bottom:.5rem">em <span id="c-per">12 meses</span></div>
+        <div class="cdiv"></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:.7rem">
+          <div class="ms"><div class="ms-lbl">Por semana</div><div class="ms-val" id="c-sem">R$ 23</div></div>
+          <div class="ms"><div class="ms-lbl">Por dia</div><div class="ms-val" id="c-dia">R$ 3,33</div></div>
+        </div>
+        <div class="calc-dica" id="c-dica">💡 Com isso você forma uma boa reserva de emergência!</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-final">
+    <h2>Sua jornada começa hoje 🌱</h2>
+    <p>Não precisa de muito dinheiro para começar. Precisa do primeiro passo. A gente caminha junto.</p>
+    <button class="btn-dark" onclick="ir('hub')">Abrir meu hub financeiro →</button>
+  </section>
+</div>
+
+<!-- APRENDER -->
+<div class="page" id="pg-aprender">
+  <section class="modulos">
+    <div class="sec-hdr">
+      <div class="sec-tag">📚 Todos os módulos</div>
+      <h2>Aprenda no seu ritmo</h2>
+      <p>Conteúdo pensado para quem começa do zero. Clique em qualquer módulo para aprender com a IA.</p>
+    </div>
+    <div class="mod-grid">
+      <div class="mod-card" onclick="sendPrompt('Me ensina sobre orçamento pessoal do zero')"><div class="mod-icon">💰</div><h3>Orçamento pessoal</h3><p>Como organizar entradas e saídas para sobrar dinheiro todo mês.</p><div class="mod-badge">🎓 5 aulas · 40min</div></div>
+      <div class="mod-card" onclick="sendPrompt('Como sair das dívidas de cartão de crédito e cheque especial?')"><div class="mod-icon">🔓</div><h3>Saindo das dívidas</h3><p>Estratégias para quitar dívidas e nunca mais cair nos juros altos.</p><div class="mod-badge">🎓 7 aulas · 55min</div></div>
+      <div class="mod-card" onclick="sendPrompt('Como montar uma reserva de emergência com pouco dinheiro?')"><div class="mod-icon">🛡️</div><h3>Reserva de emergência</h3><p>Proteja sua família de imprevistos com uma reserva acessível.</p><div class="mod-badge">🎓 4 aulas · 30min</div></div>
+      <div class="mod-card" onclick="sendPrompt('Quais benefícios sociais eu tenho direito e como acessar?')"><div class="mod-icon">📋</div><h3>Benefícios sociais</h3><p>Bolsa Família, CadÚnico, BPC e outros — seus direitos explicados.</p><div class="mod-badge">🎓 6 aulas · 48min</div></div>
+      <div class="mod-card" onclick="sendPrompt('Como começar a investir no Tesouro Direto com pouco dinheiro?')"><div class="mod-icon">📈</div><h3>Primeiros investimentos</h3><p>Tesouro Direto, CDB e poupança para quem nunca investiu.</p><div class="mod-badge">🎓 8 aulas · 1h10min</div></div>
+      <div class="mod-card" onclick="sendPrompt('Como usar o cartão de crédito sem entrar em dívidas?')"><div class="mod-icon">💳</div><h3>Crédito consciente</h3><p>Cartão, crediário e empréstimo — use o crédito a seu favor.</p><div class="mod-badge">🎓 5 aulas · 42min</div></div>
+      <div class="mod-card" onclick="sendPrompt('O que é MEI e como abrir meu MEI para trabalhar por conta própria?')"><div class="mod-icon">🏪</div><h3>MEI e autonomia</h3><p>Para quem trabalha por conta própria — diretos, impostos e benefícios do MEI.</p><div class="mod-badge">🎓 6 aulas · 50min</div></div>
+      <div class="mod-card" onclick="sendPrompt('Como planejar aposentadoria sem ter carteira assinada?')"><div class="mod-icon">🌅</div><h3>Aposentadoria</h3><p>Como garantir o futuro mesmo sem carteira assinada ou INSS regular.</p><div class="mod-badge">🎓 5 aulas · 45min</div></div>
+      <div class="mod-card" onclick="sendPrompt('Dicas de como economizar na alimentação e compras do mês')"><div class="mod-icon">🛒</div><h3>Consumo inteligente</h3><p>Economize nas compras, alimentação e contas sem abrir mão do essencial.</p><div class="mod-badge">🎓 4 aulas · 35min</div></div>
+    </div>
+  </section>
+  <section class="cta-final" style="padding:3rem 2rem">
+    <h2 style="font-size:2rem">Pronto para colocar em prática?</h2>
+    <p>Use o hub para registrar seus gastos e ver sua evolução em tempo real.</p>
+    <button class="btn-dark" onclick="ir('hub')">Abrir meu hub →</button>
+  </section>
+</div>
+
+<!-- CRIANÇAS: ARTIGO -->
+<div class="page" id="pg-criancas">
+  <div class="artigo-page">
+    <div class="artigo-hero">
+      <div class="sec-tag">🧒 Educação financeira infantil</div>
+      <h1>Como ensinar crianças a ter <em>educação financeira</em></h1>
+      <p>Um guia completo e prático para pais, responsáveis e educadores que querem formar filhos mais conscientes com o dinheiro — mesmo sem ter muito.</p>
+      <div class="artigo-meta">
+        <span>📖 Leitura: ~8 minutos</span>
+        <span>🎓 4 seções</span>
+        <span>✅ Baseado em evidências</span>
+      </div>
+    </div>
+
+    <nav class="artigo-nav" aria-label="Seções do artigo">
+      <button class="anav-btn ativo" onclick="mudarSecao(0)">1. Por que ensinar</button>
+      <button class="anav-btn" onclick="mudarSecao(1)">2. Por faixa etária</button>
+      <button class="anav-btn" onclick="mudarSecao(2)">3. Atividades práticas</button>
+      <button class="anav-btn" onclick="mudarSecao(3)">4. Erros comuns</button>
+    </nav>
+
+    <!-- SEÇÃO 1 -->
+    <div class="artigo-secao ativo" id="as-0">
+      <h2>Por que ensinar educação financeira desde cedo?</h2>
+      <p>Muitas famílias em situação de vulnerabilidade econômica carregam dívidas por gerações. Parte desse ciclo acontece porque ninguém nunca ensinou o que fazer com o dinheiro — e não porque as pessoas não se esforçaram o suficiente. Ensinar crianças muda esse ciclo.</p>
+      <p>Pesquisas mostram que hábitos financeiros são formados entre os 6 e os 12 anos. Não é preciso ter muito dinheiro para dar uma boa educação financeira — é preciso ter conversa, exemplo e pequenos exercícios do dia a dia.</p>
+
+      <div class="dica-card">
+        <div class="dica-emoji">💡</div>
+        <div class="dica-txt">
+          <strong>A pobreza não é um ensinamento negativo</strong>
+          <p>Crescer com poucos recursos pode ensinar resiliência, criatividade e o valor real das coisas. O que queremos acrescentar é a consciência e as ferramentas para administrar o que se tem com mais tranquilidade.</p>
+        </div>
+      </div>
+
+      <h3>O que crianças aprendem observando os adultos</h3>
+      <p>Antes de qualquer aula ou conversa formal, crianças já aprendem sobre dinheiro ao observar os adultos à sua volta. Veja o que elas captam:</p>
+      <ul>
+        <li><strong>Como os adultos reagem ao dinheiro:</strong> ansiedade, segredo ou naturalidade?</li>
+        <li><strong>Se o dinheiro é assunto proibido</strong> ou algo que se pode perguntar e conversar.</li>
+        <li><strong>Se gastar é um prazer imediato</strong> ou se existe espera e planejamento.</li>
+        <li><strong>Se existem prioridades claras:</strong> necessidade x vontade.</li>
+      </ul>
+      <p>Isso não significa que você precisa ser perfeito. Significa que incluir a criança na conversa real — mesmo nas dificuldades — é mais valioso do que esconder tudo "para proteger".</p>
+
+      <div class="dica-card">
+        <div class="dica-emoji">🗣️</div>
+        <div class="dica-txt">
+          <strong>Frase para experimentar hoje</strong>
+          <p>"Esse mês estamos economizando para pagar a conta de luz. Por isso não vamos comprar isso agora — mas podemos planejar para o próximo mês." Simples, honesto e educativo.</p>
+        </div>
+      </div>
+
+      <div class="artigo-nav-bottom">
+        <button class="anb-btn" disabled>← Anterior</button>
+        <button class="anb-btn prox" onclick="mudarSecao(1)">Próxima seção: Por faixa etária →</button>
+      </div>
+    </div>
+
+    <!-- SEÇÃO 2 -->
+    <div class="artigo-secao" id="as-1">
+      <h2>O que ensinar em cada fase da vida</h2>
+      <p>Não existe um único jeito de ensinar. O que funciona para uma criança de 4 anos é diferente do que funciona para um adolescente de 15. Veja o que é adequado para cada faixa etária.</p>
+
+      <div class="faixa-etaria">
+        <div class="fe-card">
+          <div class="fe-topo">3 a 6 anos</div>
+          <h4>🌱 Sementinhas</h4>
+          <ul>
+            <li>Reconhecer moedas e cédulas</li>
+            <li>Entender que dinheiro se troca por coisas</li>
+            <li>Praticar paciência (esperar para ter algo)</li>
+            <li>Noção de "tem" e "não tem"</li>
+          </ul>
+        </div>
+        <div class="fe-card">
+          <div class="fe-topo">7 a 11 anos</div>
+          <h4>🌿 Cultivando</h4>
+          <ul>
+            <li>Mesada simples com propósito</li>
+            <li>Poupar para um objetivo pequeno</li>
+            <li>Diferença entre querer e precisar</li>
+            <li>Fazer listas de compras com os pais</li>
+            <li>Contar troco e fazer contas simples</li>
+          </ul>
+        </div>
+        <div class="fe-card">
+          <div class="fe-topo">12 a 17 anos</div>
+          <h4>🌳 Amadurecendo</h4>
+          <ul>
+            <li>Orçamento pessoal próprio</li>
+            <li>Entender juros de forma simples</li>
+            <li>Pesquisar preços antes de comprar</li>
+            <li>Primeiro objetivo de poupança maior</li>
+            <li>Conversar sobre trabalho e renda</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Sobre mesada: quanto e como dar?</h3>
+      <p>A mesada não precisa ser alta para ser educativa. O mais importante é a regularidade e a liberdade para a criança decidir — e errar. Um erro com R$ 5 hoje vale muito mais que uma palestra sobre dinheiro.</p>
+      <ul>
+        <li><strong>Não vincule a mesada a tarefas domésticas:</strong> tarefas são parte do convívio familiar, não um serviço pago.</li>
+        <li><strong>Dê em partes menores e mais frequentes</strong> para crianças pequenas (semanalmente).</li>
+        <li><strong>Deixe a criança decidir</strong> — mesmo que a decisão pareça errada para você.</li>
+        <li><strong>Depois do erro, converse</strong> sem punir: "O que você faria diferente da próxima vez?"</li>
+      </ul>
+
+      <div class="dica-card">
+        <div class="dica-emoji">⚠️</div>
+        <div class="dica-txt">
+          <strong>Sem condições para dar mesada?</strong>
+          <p>Tudo bem. Envolva a criança nas decisões de compra, deixe ela separar moedas para o mercado, converse sobre os preços. A experiência real vale mais do que o valor da mesada.</p>
+        </div>
+      </div>
+
+      <div class="artigo-nav-bottom">
+        <button class="anb-btn" onclick="mudarSecao(0)">← Por que ensinar</button>
+        <button class="anb-btn prox" onclick="mudarSecao(2)">Próxima: Atividades práticas →</button>
+      </div>
+    </div>
+
+    <!-- SEÇÃO 3 -->
+    <div class="artigo-secao" id="as-2">
+      <h2>Atividades práticas para fazer em casa</h2>
+      <p>Não é preciso material caro. Estas atividades usam o que está ao seu redor — e criam memórias e hábitos duradouros.</p>
+
+      <h3>🏦 O cofre dos três potes</h3>
+      <p>Use três potes, latinhas ou envelopes. Coloque etiquetas: <strong>Gastar</strong>, <strong>Poupar</strong> e <strong>Compartilhar</strong>. Quando a criança receber dinheiro (mesada, presente, ajuda de parente), divida entre os três. Compartilhar pode ser dar para alguém da família, ajudar um vizinho ou guardar para um presente de aniversário.</p>
+
+      <div class="dica-card">
+        <div class="dica-emoji">🥫</div>
+        <div class="dica-txt">
+          <strong>Materiais: qualquer pote que tiver em casa</strong>
+          <p>Latinha de leite em pó, copo descartável, envelope de carta — o que importa é a divisão visual. Você pode decorar com a criança para tornar mais especial.</p>
+        </div>
+      </div>
+
+      <h3>🛒 Ir ao mercado com missão</h3>
+      <p>Antes de ir ao mercado, defina junto com a criança um valor fixo para ela gerenciar (ex: a verba do lanche da semana). Deixe ela escolher dentro do orçamento, comparar marcas, calcular se "dá" ou não. É uma aula real de matemática e planejamento.</p>
+
+      <h3>📅 O calendário da meta</h3>
+      <p>Defina um objetivo pequeno com a criança: um brinquedo, um tênis, uma saída especial. Escreva o valor e cole na parede. A cada semana que ela poupa, marque um quadradinho. Ver o progresso visual é altamente motivador para crianças.</p>
+
+      <h3>🎲 Jogo do mercado em casa</h3>
+      <p>Montar um "mercadinho" com embalagens vazias em casa e usar dinheiro de papel (pode imprimir ou fazer à mão). As crianças praticam cobrar, dar troco e decidir o que "comprar". Funciona muito bem entre 4 e 9 anos.</p>
+
+      <h3>📰 Conversa sobre uma conta de casa</h3>
+      <p>Para crianças maiores (10+), mostre uma conta real de casa — água, luz, telefone. Explique o que representa, por que esse valor, e o que acontece se não pagar. Isso humaniza a gestão financeira e cria empatia com o trabalho dos adultos.</p>
+
+      <div class="artigo-nav-bottom">
+        <button class="anb-btn" onclick="mudarSecao(1)">← Por faixa etária</button>
+        <button class="anb-btn prox" onclick="mudarSecao(3)">Próxima: Erros comuns →</button>
+      </div>
+    </div>
+
+    <!-- SEÇÃO 4 -->
+    <div class="artigo-secao" id="as-3">
+      <h2>Erros comuns (e como evitá-los)</h2>
+      <p>Mesmo com boa intenção, alguns comportamentos podem atrapalhar o aprendizado financeiro das crianças. Conheça os mais comuns:</p>
+
+      <ul>
+        <li><strong>Usar dinheiro como punição ou recompensa afetiva:</strong> "Se você se comportar, eu compro" ou "Você foi mal na escola, sem mesada" embaralha dinheiro com amor e disciplina.</li>
+        <li><strong>Fazer do dinheiro um tabu:</strong> quando adultos nunca falam de dinheiro, crianças crescem sem saber lidar com ele — e cheias de ansiedade e fantasias sobre o assunto.</li>
+        <li><strong>Resolver sempre os erros delas:</strong> se a criança gastou tudo e ficou sem dinheiro até o fim da semana, deixe ela sentir (com segurança e acolhimento). Esse desconforto é o melhor professor.</li>
+        <li><strong>Prometer e não cumprir:</strong> "Semana que vem eu dou a mesada atrasada" — a inconsistência ensina que acordos não precisam ser honrados.</li>
+        <li><strong>Falar que "somos pobres" como vergonha:</strong> isso cria uma identidade de escassez. Em vez disso: "Agora nosso dinheiro está comprometido com X, então vamos planejar."</li>
+      </ul>
+
+      <div class="dica-card">
+        <div class="dica-emoji">❤️</div>
+        <div class="dica-txt">
+          <strong>O mais importante: seu exemplo</strong>
+          <p>As crianças aprendem mais pelo que você faz do que pelo que você fala. Não precisa ser perfeito — precisa ser honesto. Mostrar que você também está aprendendo a lidar com o dinheiro é um ensinamento poderoso.</p>
+        </div>
+      </div>
+
+      <h3>Recursos para continuar aprendendo</h3>
+      <ul>
+        <li>Explore os módulos da plataforma com seus filhos juntos</li>
+        <li>Use o Hub para mostrar às crianças como funciona um orçamento real</li>
+        <li>Participe do ranking e mostre que aprender pode ser divertido</li>
+      </ul>
+
+      <div style="display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.5rem">
+        <button class="btn-primary" onclick="ir('hub')">Abrir meu hub financeiro →</button>
+        <button class="btn-sec" onclick="ir('game')">🏆 Jogar e ganhar pontos</button>
+      </div>
+
+      <div class="artigo-nav-bottom">
+        <button class="anb-btn" onclick="mudarSecao(2)">← Atividades práticas</button>
+        <button class="anb-btn prox" onclick="mudarSecao(0)">Recomeçar o artigo ↺</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GAMIFICAÇÃO / RANKING -->
+<div class="page" id="pg-game">
+  <div class="game-page">
+    <div class="game-wrap">
+
+      <!-- Hero do player -->
+      <div class="game-hero">
+        <div>
+          <h2>Aprenda, complete desafios e suba no ranking 🏆</h2>
+          <p>Ganhe pontos de XP respondendo perguntas e completando missões financeiras. Quanto mais você aprende, mais você progride — e ajuda sua comunidade.</p>
+          <div class="game-xp-pill">⚡ <span id="g-xp-total">0</span> XP acumulados</div>
+        </div>
+        <div class="game-nivel-box">
+          <div class="gnivel-lbl">Seu nível</div>
+          <div class="gnivel-val" id="g-nivel">1</div>
+          <div class="gnivel-nome" id="g-nivel-nome">Aprendiz</div>
+          <div class="gnivel-prog"><div class="gnivel-fill" id="g-nivel-fill" style="width:5%"></div></div>
+        </div>
+      </div>
+
+      <!-- Alerta sobre uso saudável -->
+      <div class="alerta-saudavel">
+        <div class="as-ico">⚖️</div>
+        <div>
+          <h4>Gamificação como ferramenta, não como vício</h4>
+          <p>Pontos e rankings são motivadores poderosos — mas é importante usá-los com equilíbrio. Aqui, os desafios têm limite diário justamente para que o foco seja o aprendizado real, não a pontuação. Dicas para uma experiência saudável:</p>
+          <ul>
+            <li><strong>Faça de 1 a 3 desafios por dia.</strong> A consistência ao longo do tempo vale mais que um maratona de uma hora.</li>
+            <li><strong>O objetivo é aprender, não vencer.</strong> Se você acertou sem entender o porquê, vale reler o conteúdo.</li>
+            <li><strong>O ranking é para inspirar, não para pressionar.</strong> Compare-se com quem você era ontem, não com outros.</li>
+            <li><strong>Pause sempre que sentir ansiedade</strong> com a pontuação. Isso é sinal de que o jogo virou o foco errado.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="game-cols">
+        <!-- Desafios diários -->
+        <div class="gcard">
+          <div class="gcard-title">🎯 Desafios do dia</div>
+          <div class="desafio-lista" id="g-desafios">
+            <div class="desafio" id="d1" onclick="concluirDesafio('d1',30,'Registrou receitas e despesas')">
+              <div class="desafio-ico">📝</div>
+              <div class="desafio-info">
+                <div class="desafio-nome">Registrar 1 receita e 1 despesa no hub</div>
+                <div class="desafio-desc">Abra o Meu Hub e adicione um lançamento de cada tipo</div>
+              </div>
+              <div class="desafio-xp">+30 XP</div>
+            </div>
+            <div class="desafio" id="d2" onclick="concluirDesafio('d2',20,'Leu sobre educação infantil')">
+              <div class="desafio-ico">🧒</div>
+              <div class="desafio-info">
+                <div class="desafio-nome">Ler uma seção do artigo de crianças</div>
+                <div class="desafio-desc">Acesse a aba "Crianças" e leia qualquer seção do artigo</div>
+              </div>
+              <div class="desafio-xp">+20 XP</div>
+            </div>
+            <div class="desafio" id="d3" onclick="concluirDesafio('d3',25,'Calculou meta de poupança')">
+              <div class="desafio-ico">🧮</div>
+              <div class="desafio-info">
+                <div class="desafio-nome">Usar a calculadora de poupança</div>
+                <div class="desafio-desc">Simule quanto você pode juntar na calculadora da página inicial</div>
+              </div>
+              <div class="desafio-xp">+25 XP</div>
+            </div>
+            <div class="desafio" id="d4" onclick="concluirDesafio('d4',50,'Completou o quiz do dia')">
+              <div class="desafio-ico">🧠</div>
+              <div class="desafio-info">
+                <div class="desafio-nome">Completar o quiz financeiro</div>
+                <div class="desafio-desc">Responda todas as perguntas do quiz abaixo</div>
+              </div>
+              <div class="desafio-xp">+50 XP</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ranking -->
+        <div class="gcard">
+          <div class="gcard-title">🏆 Ranking da comunidade</div>
+          <div class="ranking-lista" id="g-ranking">
+            <div class="rk-item"><div class="rk-pos">1º</div><div class="rk-avatar">🦁</div><div class="rk-nome">Maria S.</div><div class="rk-badge">Mestre</div><div class="rk-xp">2.840 XP</div></div>
+            <div class="rk-item"><div class="rk-pos">2º</div><div class="rk-avatar">🦊</div><div class="rk-nome">João P.</div><div class="rk-badge">Avançado</div><div class="rk-xp">2.105 XP</div></div>
+            <div class="rk-item"><div class="rk-pos">3º</div><div class="rk-avatar">🐢</div><div class="rk-nome">Ana R.</div><div class="rk-badge">Avançado</div><div class="rk-xp">1.870 XP</div></div>
+            <div class="rk-item"><div class="rk-pos">4º</div><div class="rk-avatar">🐝</div><div class="rk-nome">Carlos M.</div><div class="rk-badge">Intermediário</div><div class="rk-xp">1.430 XP</div></div>
+            <div class="rk-item"><div class="rk-pos">5º</div><div class="rk-avatar">🌻</div><div class="rk-nome">Patrícia L.</div><div class="rk-badge">Intermediário</div><div class="rk-xp">980 XP</div></div>
+            <div class="rk-item meu" id="rk-meu"><div class="rk-pos" id="rk-meu-pos">—</div><div class="rk-avatar">🌱</div><div class="rk-nome">Você</div><div class="rk-badge">Aprendiz</div><div class="rk-xp" id="rk-meu-xp">0 XP</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quiz -->
+      <div class="quiz-box">
+        <div class="quiz-header">
+          <span class="gcard-title" style="margin:0">🧠 Quiz financeiro</span>
+          <div style="display:flex;gap:.5rem;align-items:center">
+            <span class="quiz-prog" id="q-prog">Pergunta 1 de 5</span>
+            <span class="quiz-xp-badge" id="q-xp-badge">+10 XP por acerto</span>
+          </div>
+        </div>
+        <div class="quiz-q" id="q-texto"></div>
+        <div class="quiz-opts" id="q-opts"></div>
+        <div class="quiz-feedback" id="q-feedback"></div>
+        <button class="quiz-next" id="q-next" onclick="proximaPergunta()">Próxima →</button>
+      </div>
+
+      <!-- Conquistas -->
+      <div class="gcard">
+        <div class="gcard-title">🏅 Suas conquistas</div>
+        <div class="conquistas-grid" id="g-conquistas">
+          <div class="conquista desbloqueada" id="c-primeiro"><div class="conquista-ico">🌱</div><div class="conquista-nome">Primeiro passo</div></div>
+          <div class="conquista" id="c-quiz1"><div class="conquista-ico">🧠</div><div class="conquista-nome">Quiz concluído</div></div>
+          <div class="conquista" id="c-desafio1"><div class="conquista-ico">⚡</div><div class="conquista-nome">1º desafio</div></div>
+          <div class="conquista" id="c-xp100"><div class="conquista-ico">💯</div><div class="conquista-nome">100 XP</div></div>
+          <div class="conquista" id="c-xp300"><div class="conquista-ico">🔥</div><div class="conquista-nome">300 XP</div></div>
+          <div class="conquista" id="c-xp500"><div class="conquista-ico">🚀</div><div class="conquista-nome">500 XP</div></div>
+          <div class="conquista" id="c-mestre"><div class="conquista-ico">👑</div><div class="conquista-nome">Mestre financeiro</div></div>
+          <div class="conquista" id="c-streak"><div class="conquista-ico">📅</div><div class="conquista-nome">7 dias seguidos</div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- HUB -->
+<div class="page" id="pg-hub">
+  <div class="hub-page">
+    <div class="hub-hdr hub-wrap">
+      <div class="hub-title"><div class="logo-dot" style="width:26px;height:26px;font-size:.82rem">🌱</div> Meu Hub Financeiro</div>
+      <div class="hub-mes" id="hub-mes"></div>
+    </div>
+    <div class="hub-wrap">
+      <div class="metric-row">
+        <div class="metric"><div class="m-lbl">Receitas</div><div class="m-val g" id="h-rec">R$ 0</div><div class="m-sub">este mês</div></div>
+        <div class="metric"><div class="m-lbl">Despesas</div><div class="m-val r" id="h-des">R$ 0</div><div class="m-sub">este mês</div></div>
+        <div class="metric"><div class="m-lbl">Saldo</div><div class="m-val" id="h-sal">R$ 0</div><div class="m-sub">disponível</div></div>
+        <div class="metric"><div class="m-lbl">Reserva</div><div class="m-val a" id="h-res">R$ 0</div><div class="m-sub">acumulada</div></div>
+      </div>
+
+      <div class="two-col">
+        <div class="hcard">
+          <div class="hcard-title">+ Novo lançamento</div>
+          <div class="tipo-btns">
+            <button class="tbtn rativo" id="btn-r" onclick="setT('r')">+ Receita</button>
+            <button class="tbtn" id="btn-d" onclick="setT('d')">− Despesa</button>
+          </div>
+          <input class="hinput" type="text" id="h-desc" placeholder="Descrição (ex: Salário, Aluguel)">
+          <input class="hinput" type="number" id="h-val" placeholder="Valor em R$" min="0" step="0.01">
+          <select class="hinput" id="h-cat">
+            <option value="">Categoria</option>
+            <option>Moradia</option><option>Alimentação</option><option>Transporte</option>
+            <option>Saúde</option><option>Educação</option><option>Lazer</option>
+            <option>Trabalho</option><option>Outros</option>
+          </select>
+          <button class="hadd" onclick="addL()">+ Adicionar</button>
+          <div class="dica-box" id="h-dica" style="display:none"></div>
+        </div>
+
+        <div class="hcard">
+          <div class="hcard-title">📋 Últimos lançamentos</div>
+          <div class="lista" id="h-lista"><div class="empty">Nenhum lançamento ainda.<br>Adicione sua primeira entrada!</div></div>
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div class="hcard">
+          <div class="hcard-title">📊 Despesas por categoria</div>
+          <div class="bcat" id="h-bcat"><div class="empty" style="padding:.8rem 0">Sem despesas registradas</div></div>
+        </div>
+        <div class="hcard">
+          <div class="hcard-title">🎯 Minhas metas</div>
+          <div style="display:flex;flex-direction:column;gap:9px">
+            <div class="meta-item"><div class="meta-top"><span class="meta-nome">🛡️ Reserva de emergência</span><span class="meta-v" id="mt1-v">R$ 0 / R$ 3.000</span></div><div class="meta-track"><div class="meta-fill" id="mt1-f" style="width:0%"></div></div><div class="meta-pct" id="mt1-p">0% concluído</div></div>
+            <div class="meta-item"><div class="meta-top"><span class="meta-nome">🎓 Curso profissional</span><span class="meta-v">R$ 180 / R$ 500</span></div><div class="meta-track"><div class="meta-fill" style="width:36%"></div></div><div class="meta-pct">36% concluído</div></div>
+            <div class="meta-item"><div class="meta-top"><span class="meta-nome">🏠 Reforma da casa</span><span class="meta-v">R$ 620 / R$ 2.000</span></div><div class="meta-track"><div class="meta-fill" style="width:31%"></div></div><div class="meta-pct">31% concluído</div></div>
+          </div>
+          <button style="width:100%;margin-top:10px;padding:7px;font-size:.78rem;font-weight:600;border:0.5px solid var(--bd);border-radius:9px;background:transparent;cursor:pointer;color:var(--cs);font-family:'DM Sans',sans-serif" onclick="sendPrompt('Me ajuda a criar um plano de metas financeiras realistas para minha situação')">Criar nova meta com IA ↗</button>
+        </div>
+      </div>
+
+      <div class="hcard" style="margin-bottom:1rem">
+        <div class="hcard-title">📈 Evolução do saldo — últimos 6 meses</div>
+        <div class="chart-wrap"><canvas id="h-grafico" role="img" aria-label="Gráfico de linha mostrando saldo dos últimos 6 meses">Evolução do saldo mensal.</canvas></div>
+      </div>
+
+      <div class="hub-actions">
+        <button class="hab" onclick="sendPrompt('Analisa meu orçamento e me dá dicas para economizar mais este mês')">Analisar orçamento ↗</button>
+        <button class="hab" onclick="sendPrompt('Como posso começar a investir com o dinheiro que sobrou este mês?')">Dica de investimento ↗</button>
+        <button class="hab hpri" onclick="sendPrompt('Estou com dívidas, me ajuda a criar um plano para sair delas')">Preciso sair de dívidas ↗</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Toast global -->
+<div class="toast" id="toast"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+const MESES=['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+const CATS={Moradia:'🏠',Alimentação:'🍽️',Transporte:'🚌',Saúde:'💊',Educação:'📚',Lazer:'🎉',Trabalho:'💼',Outros:'📦'};
+const CORES={Moradia:'#378ADD',Alimentação:'#D85A30',Transporte:'#1D9E75',Saúde:'#D4537E',Educação:'#7F77DD',Lazer:'#BA7517',Trabalho:'#639922',Outros:'#888780'};
+const hoje=new Date();
+document.getElementById('hub-mes').textContent=MESES[hoje.getMonth()]+' '+hoje.getFullYear();
+
+function ir(pg){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('ativo'));
+  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('ativo'));
+  document.getElementById('pg-'+pg).classList.add('ativo');
+  document.getElementById('nl-'+pg)&&document.getElementById('nl-'+pg).classList.add('ativo');
+  if(pg==='hub')renderHub();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function calcular(){
+  const m=parseFloat(document.getElementById('c-mensal').value)||0;
+  const n=parseInt(document.getElementById('c-meses').value)||0;
+  const t=m*n;
+  document.getElementById('c-res').textContent='R$ '+t.toLocaleString('pt-BR',{maximumFractionDigits:0});
+  document.getElementById('c-per').textContent=n+(n===1?' mês':' meses');
+  document.getElementById('c-sem').textContent='R$ '+Math.round(m/4.33);
+  document.getElementById('c-dia').textContent='R$ '+(m/30).toFixed(2).replace('.',',');
+  let d='';
+  if(t<500)d='🌱 Todo começo conta. Você está plantando sua semente!';
+  else if(t<1500)d='💪 Ótimo! Você está construindo sua segurança.';
+  else if(t<5000)d='🛡️ Com isso você forma uma boa reserva de emergência!';
+  else d='🚀 Incrível! Esse valor já permite pensar em investimentos!';
+  document.getElementById('c-dica').textContent=d;
+}
+calcular();
+
+let tipo='r';
+let lancs=[
+  {id:1,tipo:'r',desc:'Salário',val:1800,cat:'Trabalho'},
+  {id:2,tipo:'d',desc:'Aluguel',val:550,cat:'Moradia'},
+  {id:3,tipo:'d',desc:'Mercado',val:280,cat:'Alimentação'},
+  {id:4,tipo:'d',desc:'Ônibus mensal',val:110,cat:'Transporte'},
+  {id:5,tipo:'r',desc:'Bico de fim de semana',val:200,cat:'Trabalho'},
+  {id:6,tipo:'d',desc:'Farmácia',val:60,cat:'Saúde'},
+];
+let nid=7;
+
+function setT(t){
+  tipo=t;
+  document.getElementById('btn-r').className='tbtn'+(t==='r'?' rativo':'');
+  document.getElementById('btn-d').className='tbtn'+(t==='d'?' dativo':'');
+}
+
+function fmt(v){return'R$ '+Math.round(v).toLocaleString('pt-BR')}
+
+function addL(){
+  const desc=document.getElementById('h-desc').value.trim();
+  const val=parseFloat(document.getElementById('h-val').value);
+  const cat=document.getElementById('h-cat').value;
+  if(!desc||!val||val<=0||!cat){mostrarD('⚠️ Preencha todos os campos.');return;}
+  lancs.unshift({id:nid++,tipo,desc,val,cat});
+  document.getElementById('h-desc').value='';
+  document.getElementById('h-val').value='';
+  document.getElementById('h-cat').value='';
+  renderHub();
+  mostrarD(tipo==='r'?'💪 Receita registrada! Continue assim.':'📝 Despesa anotada! Controle é poder.');
+}
+
+function mostrarD(msg){
+  const b=document.getElementById('h-dica');
+  b.style.display='block';b.textContent=msg;
+  setTimeout(()=>b.style.display='none',3200);
+}
+
+function remL(id){lancs=lancs.filter(l=>l.id!==id);renderHub();}
+
+let grafico=null;
+const mockSaldos=[820,950,710,1100,1380,null];
+
+function renderHub(){
+  const rec=lancs.filter(l=>l.tipo==='r').reduce((a,l)=>a+l.val,0);
+  const des=lancs.filter(l=>l.tipo==='d').reduce((a,l)=>a+l.val,0);
+  const sal=rec-des;
+  const res=Math.max(0,sal*0.2);
+  mockSaldos[5]=sal;
+
+  document.getElementById('h-rec').textContent=fmt(rec);
+  document.getElementById('h-des').textContent=fmt(des);
+  const sm=document.getElementById('h-sal');
+  sm.textContent=fmt(sal);sm.className='m-val'+(sal>=0?' g':' r');
+  document.getElementById('h-res').textContent=fmt(res);
+
+  const p1=Math.min(100,Math.round((res/3000)*100));
+  document.getElementById('mt1-v').textContent=fmt(res)+' / R$ 3.000';
+  document.getElementById('mt1-f').style.width=p1+'%';
+  document.getElementById('mt1-p').textContent=p1+'% concluído';
+
+  const lista=document.getElementById('h-lista');
+  lista.innerHTML=lancs.length===0
+    ?'<div class="empty">Nenhum lançamento ainda.<br>Adicione sua primeira entrada!</div>'
+    :lancs.slice(0,8).map(l=>`<div class="li"><div class="li-left"><div class="li-ico" style="background:${l.tipo==='r'?'#EAF3DE':'#FCEBEB'}">${CATS[l.cat]||'📦'}</div><div><div class="li-desc">${l.desc}</div><div class="li-cat">${l.cat}</div></div></div><div style="display:flex;align-items:center;gap:7px"><span class="li-val v${l.tipo}">${l.tipo==='r'?'+':'-'}${fmt(l.val)}</span><button class="li-del" onclick="remL(${l.id})" aria-label="Remover">✕</button></div></div>`).join('');
+
+  const porCat={};
+  lancs.filter(l=>l.tipo==='d').forEach(l=>{porCat[l.cat]=(porCat[l.cat]||0)+l.val;});
+  const bc=document.getElementById('h-bcat');
+  if(!Object.keys(porCat).length){bc.innerHTML='<div class="empty" style="padding:.8rem 0">Sem despesas registradas</div>';}
+  else{
+    const mx=Math.max(...Object.values(porCat));
+    bc.innerHTML=Object.entries(porCat).sort((a,b)=>b[1]-a[1]).map(([c,v])=>`<div class="bi"><div class="bt"><span class="bn">${CATS[c]||'📦'} ${c}</span><span class="bv">${fmt(v)}</span></div><div class="btrack"><div class="bfill" style="width:${Math.round((v/mx)*100)}%;background:${CORES[c]||'#888'}"></div></div></div>`).join('');
+  }
+
+  const labels=[];
+  for(let i=5;i>=0;i--){const d=new Date(hoje.getFullYear(),hoje.getMonth()-i,1);labels.push(MESES[d.getMonth()]);}
+  const dados=mockSaldos.map(v=>v===null?0:Math.round(v));
+
+  if(grafico){grafico.data.labels=labels;grafico.data.datasets[0].data=dados;grafico.update();return;}
+  grafico=new Chart(document.getElementById('h-grafico'),{
+    type:'line',
+    data:{labels,datasets:[{label:'Saldo',data:dados,borderColor:'#C89B00',backgroundColor:'rgba(245,197,24,.08)',fill:true,tension:.35,pointBackgroundColor:'#F5C518',pointBorderColor:'#C89B00',pointRadius:4,pointHoverRadius:6,borderWidth:2}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>fmt(ctx.raw)}}},scales:{y:{grid:{color:'rgba(0,0,0,.04)'},ticks:{callback:v=>fmt(v),font:{size:10}}},x:{grid:{display:false},ticks:{font:{size:10}}}}}
+  });
+}
+
+/* ── ARTIGO: seções ── */
+let secaoAtual=0;
+function mudarSecao(idx){
+  document.querySelectorAll('.artigo-secao').forEach((s,i)=>{
+    s.classList.toggle('ativo',i===idx);
+  });
+  document.querySelectorAll('.anav-btn').forEach((b,i)=>{
+    b.classList.toggle('ativo',i===idx);
+  });
+  secaoAtual=idx;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ── GAMIFICAÇÃO ── */
+let xpTotal=0;
+const NIVEIS=[
+  {nome:'Aprendiz',min:0,max:150},
+  {nome:'Curioso',min:150,max:350},
+  {nome:'Intermediário',min:350,max:600},
+  {nome:'Avançado',min:600,max:1000},
+  {nome:'Mestre',min:1000,max:2000},
+];
+
+function ganharXP(xp,motivo){
+  xpTotal+=xp;
+  document.getElementById('g-xp-total').textContent=xpTotal;
+  document.getElementById('rk-meu-xp').textContent=xpTotal+' XP';
+  atualizarNivel();
+  atualizarPosRanking();
+  verificarConquistas();
+  mostrarToast('⚡ +'+xp+' XP — '+motivo+'!');
+}
+
+function atualizarNivel(){
+  let nivel=1,nivelNome='Aprendiz',fill=5;
+  for(let i=0;i<NIVEIS.length;i++){
+    if(xpTotal>=NIVEIS[i].min){
+      nivel=i+1;nivelNome=NIVEIS[i].nome;
+      const range=NIVEIS[i].max-NIVEIS[i].min;
+      fill=Math.min(100,Math.round(((xpTotal-NIVEIS[i].min)/range)*100));
+    }
+  }
+  document.getElementById('g-nivel').textContent=nivel;
+  document.getElementById('g-nivel-nome').textContent=nivelNome;
+  document.getElementById('g-nivel-fill').style.width=fill+'%';
+  // badge do ranking
+  document.querySelector('#rk-meu .rk-badge').textContent=nivelNome;
+}
+
+function atualizarPosRanking(){
+  const ranking=[2840,2105,1870,1430,980];
+  let pos=ranking.length+1;
+  for(let i=0;i<ranking.length;i++){
+    if(xpTotal>=ranking[i]){pos=i+1;break;}
+  }
+  document.getElementById('rk-meu-pos').textContent=pos+'º';
+}
+
+let desafiosConcluidos=new Set();
+function concluirDesafio(id,xp,motivo){
+  if(desafiosConcluidos.has(id))return;
+  desafiosConcluidos.add(id);
+  const el=document.getElementById(id);
+  el.classList.add('concluido');
+  el.onclick=null;
+  ganharXP(xp,motivo);
+  if(desafiosConcluidos.size===1)desbloquearConquista('c-desafio1');
+}
+
+function desbloquearConquista(id){
+  const el=document.getElementById(id);
+  if(el&&!el.classList.contains('desbloqueada')){
+    el.classList.add('desbloqueada');
+    mostrarToast('🏅 Conquista desbloqueada!');
+  }
+}
+
+function verificarConquistas(){
+  if(xpTotal>=100)desbloquearConquista('c-xp100');
+  if(xpTotal>=300)desbloquearConquista('c-xp300');
+  if(xpTotal>=500)desbloquearConquista('c-xp500');
+  if(xpTotal>=1000)desbloquearConquista('c-mestre');
+}
+
+function mostrarToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),3000);
+}
+
+/* ── QUIZ ── */
+const perguntas=[
+  {q:'O que é reserva de emergência?',opts:['Dinheiro guardado para imprevistos','Uma conta de investimento','Um tipo de seguro','Crédito do banco'],c:0,exp:'A reserva de emergência é um valor guardado para cobrir imprevistos como desemprego, doença ou consertos urgentes. O ideal é ter entre 3 e 6 meses das despesas mensais.'},
+  {q:'O que acontece quando você paga apenas o mínimo do cartão de crédito?',opts:['Você não paga juros','O restante vai para o próximo mês sem juros','Você paga juros altíssimos sobre o saldo restante','O banco perdoa a dívida'],c:2,exp:'Pagar apenas o mínimo do cartão é uma das piores armadilhas financeiras. Os juros do rotativo do cartão estão entre os mais altos do Brasil — chegam a 400% ao ano.'},
+  {q:'O que significa "necessidade x vontade" nas finanças pessoais?',opts:['Tudo que compramos é necessidade','Vontade é sempre ruim','Necessidades são essenciais para viver; vontades são desejos que podemos adiar','São a mesma coisa'],c:2,exp:'Diferenciar necessidade de vontade é a base do controle financeiro. Aluguel, comida e remédio são necessidades. Um tênis novo ou um delivery são vontades — que podem ser planejadas.'},
+  {q:'Qual é o principal benefício de ter um orçamento mensal?',opts:['Gastar mais','Saber para onde vai seu dinheiro e planejar melhor','Impressionar outras pessoas','Pagar mais impostos'],c:1,exp:'Um orçamento mostra a realidade das suas finanças — o que entra, o que sai e o que sobra. Com essa visão, você pode tomar decisões mais conscientes e alcançar seus objetivos.'},
+  {q:'O que é o CadÚnico?',opts:['Um banco digital gratuito','Um aplicativo de orçamento','O Cadastro Único para programas sociais do governo federal','Um tipo de cartão de crédito'],c:2,exp:'O CadÚnico é o cadastro que o governo usa para identificar famílias de baixa renda e dar acesso a benefícios como Bolsa Família, tarifa social de energia, FGTS e muitos outros.'},
+];
+
+let qAtual=0,qRespondida=false,qAcertos=0,quizFinalizado=false;
+
+function carregarPergunta(){
+  if(quizFinalizado)return;
+  const p=perguntas[qAtual];
+  document.getElementById('q-prog').textContent='Pergunta '+(qAtual+1)+' de '+perguntas.length;
+  document.getElementById('q-texto').textContent=p.q;
+  document.getElementById('q-feedback').className='quiz-feedback';
+  document.getElementById('q-next').className='quiz-next';
+  qRespondida=false;
+
+  const opts=document.getElementById('q-opts');
+  opts.innerHTML=p.opts.map((o,i)=>`<button class="quiz-opt" onclick="responder(${i})">${o}</button>`).join('');
+}
+
+function responder(idx){
+  if(qRespondida)return;
+  qRespondida=true;
+  const p=perguntas[qAtual];
+  const btns=document.querySelectorAll('.quiz-opt');
+  btns.forEach((b,i)=>{
+    b.disabled=true;
+    if(i===p.c)b.classList.add('certo');
+    else if(i===idx&&idx!==p.c)b.classList.add('errado');
+  });
+  const ok=idx===p.c;
+  if(ok)qAcertos++;
+  const fb=document.getElementById('q-feedback');
+  fb.className='quiz-feedback show '+(ok?'ok':'nok');
+  fb.innerHTML='<strong>'+(ok?'✅ Correto!':'❌ Não foi dessa vez.')+'</strong> '+p.exp;
+  if(ok)ganharXP(10,'Acerto no quiz');
+  document.getElementById('q-next').className='quiz-next show';
+  if(qAtual===perguntas.length-1){
+    document.getElementById('q-next').textContent='Ver resultado ✓';
+  }
+}
+
+function proximaPergunta(){
+  if(qAtual<perguntas.length-1){
+    qAtual++;
+    carregarPergunta();
+  } else {
+    quizFinalizado=true;
+    document.getElementById('q-prog').textContent='Quiz concluído!';
+    document.getElementById('q-texto').textContent='Você acertou '+qAcertos+' de '+perguntas.length+' perguntas. '+
+      (qAcertos===perguntas.length?'Perfeito! 🎉':qAcertos>=3?'Muito bem! Continue estudando.':'Continue praticando, você vai melhorar!');
+    document.getElementById('q-opts').innerHTML='';
+    document.getElementById('q-feedback').className='quiz-feedback';
+    document.getElementById('q-next').className='quiz-next show';
+    document.getElementById('q-next').textContent='Recomeçar quiz ↺';
+    document.getElementById('q-next').onclick=reiniciarQuiz;
+    desbloquearConquista('c-quiz1');
+    concluirDesafio('d4',50,'Quiz completado');
+  }
+}
+
+function reiniciarQuiz(){
+  qAtual=0;qAcertos=0;quizFinalizado=false;
+  document.getElementById('q-next').onclick=proximaPergunta;
+  carregarPergunta();
+}
+
+carregarPergunta();
+</script>
